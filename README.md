@@ -152,3 +152,42 @@ Notes
 * The maximum balance value is limited by U128 (2**128 - 1).
 * JSON calls should pass U128 as a base-10 string. E.g. "100".
 * This does not include escrow functionality, as ft_transfer_call provides a superior approach. An escrow system can, of course, be added as a separate contract or additional functionality within this contract.
+
+
+My personal notes
+=====
+
+Init the contract
+`
+near contract call-function as-transaction spectacular-song.testnet new_default_meta json-args '{"owner_id": "spectacular-song.testnet"}' prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as spectacular-song.testnet network-config testnet sign-with-keychain send
+`
+
+Minting NFT
+
+`
+near contract call-function as-transaction spectacular-song.testnet nft_mint json-args '{"token_id": "1", "receiver_id": "spectacular-song.testnet", "token_metadata": { "title": "Colorful cat", "description": "Cat in colors", "media": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vSj8zyi8OYwwcjGlSK4_04eMoLH38k7ffA&s", "copies": 50}}' prepaid-gas '30 TeraGas' attached-deposit '0.1 NEAR' sign-as spectacular-song.testnet network-config testnet sign-with-keychain send
+`
+
+Transferring NFT
+`
+near contract call-function as-transaction spectacular-song.testnet nft_transfer json-args '{"token_id": "0", "receiver_id": "volodymyr_matseliukh1.testnet", "memo": "transfer ownership"}' prepaid-gas '30 TeraGas' attached-deposit '1 yoctoNEAR' sign-as spectacular-song.testnet network-config testnet sign-with-keychain send
+`
+
+`
+near contract call-function as-transaction spectacular-song.testnet nft_transfer json-args '{"token_id": "2", "receiver_id": "denbite.testnet", "memo": "transfer ownership"}' prepaid-gas '30 TeraGas' attached-deposit '1 yoctoNEAR' sign-as spectacular-song.testnet network-config testnet sign-with-keychain send
+`
+
+
+Get tokens
+`
+near contract call-function as-read-only spectacular-song.testnet nft_tokens_for_owner json-args '{"account_id": "friendly-eye.testnet"}' network-config testnet now
+`
+
+`
+near contract call-function as-read-only spectacular-song.testnet nft_tokens_for_owner json-args '{"account_id": "denbite.testnet"}' network-config testnet now
+`
+
+NFT on transfer
+`
+near contract call-function as-transaction friendly-eye.testnet nft_on_transfer json-args '{"sender_id": "volodymyr_matseliukh1.testnet", "previous_owner_id": "volodymyr_matseliukh1.testnet", "token_id": "1", "msg": "{ \"rarity\": \"legendary\", \"quest_id\": 0 }"}' prepaid-gas '30 TeraGas' attached-deposit '1 yoctoNEAR' sign-as spectacular-song.testnet network-config testnet sign-with-keychain send
+`
