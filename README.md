@@ -165,12 +165,16 @@ near contract call-function as-transaction spectacular-song.testnet new_default_
 Minting NFT
 
 `
-near contract call-function as-transaction spectacular-song.testnet nft_mint json-args '{"token_id": "1", "receiver_id": "spectacular-song.testnet", "token_metadata": { "title": "Colorful cat", "description": "Cat in colors", "media": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vSj8zyi8OYwwcjGlSK4_04eMoLH38k7ffA&s", "copies": 50}}' prepaid-gas '30 TeraGas' attached-deposit '0.1 NEAR' sign-as spectacular-song.testnet network-config testnet sign-with-keychain send
+near contract call-function as-transaction spectacular-song.testnet nft_mint json-args '{"token_id": "3", "receiver_id": "spectacular-song.testnet", "token_metadata": { "title": "Mystery box", "description": "Mystery box", "media": "https://i.etsystatic.com/26469675/r/il/641d1e/2834595676/il_570xN.2834595676_paod.jpg", "copies": 50}}' prepaid-gas '30 TeraGas' attached-deposit '0.1 NEAR' sign-as spectacular-song.testnet network-config testnet sign-with-keychain send
 `
 
 Transferring NFT
 `
-near contract call-function as-transaction spectacular-song.testnet nft_transfer json-args '{"token_id": "0", "receiver_id": "volodymyr_matseliukh1.testnet", "memo": "transfer ownership"}' prepaid-gas '30 TeraGas' attached-deposit '1 yoctoNEAR' sign-as spectacular-song.testnet network-config testnet sign-with-keychain send
+near contract call-function as-transaction spectacular-song.testnet nft_transfer json-args '{"token_id": "3", "receiver_id": "volodymyr_matseliukh1.testnet", "memo": "transfer ownership"}' prepaid-gas '30 TeraGas' attached-deposit '1 yoctoNEAR' sign-as spectacular-song.testnet network-config testnet sign-with-keychain send
+`
+
+`
+near contract call-function as-transaction spectacular-song.testnet nft_transfer json-args '{"token_id": "3", "receiver_id": "denbite.testnet", "memo": "transfer ownership"}' prepaid-gas '30 TeraGas' attached-deposit '1 yoctoNEAR' sign-as volodymyr_matseliukh1.testnet network-config testnet sign-with-keychain send
 `
 
 `
